@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Confetti: Lots of little notes</title>
+ <!-- Materialize CSS -->
+ <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+ <!-- icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+<!-- Vue.js -->
+  <script src="https://npmcdn.com/vue@next/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app" class="container">
+   <div class="row">
+   <div class="col s12 m6">
+   <div class="card">
+    <ul class="collection">
+      <li class="collection-item avatar" v-for="asset in assets">
+    <i class="material-icons circle">reorder</i>
+    <span class="title">{{ asset.name }}</span><a href="#">add aspect</a>
+    <p v-for="aspect in asset.aspects">
+    <span>{{ aspect.name }}</span>
+    <span class="badge green inverse">{{ aspect.value }}</span>
+    </p>
+      </li>
+    </ul>
+    <div class="card-action">
+    <a href="#"><i class="material-icons circle teal">add</i></a>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        assets: [ { name: "A Thing", aspects: [ { name: "Very useful", value: 3 } ] } ]
+      },
+      methods: {
+        humanizeURL: function (url) {
+          return url
+            .replace(/^https?:\/\//, '')
+            .replace(/\/$/, '')
+        }
+      }
+    })
+  </script>
+</body>
+</html>
