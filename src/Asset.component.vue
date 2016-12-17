@@ -1,11 +1,11 @@
 <template>
    <div class="card">
     <div class="card-content">
-    <span class="card-title" v-on:click="editing=true">
+    <span class="card-title" v-on:click="editName()">
     <template v-if="!editing">{{ name }}</template>
     <input v-else v-model="name"
-     v-on:keyup.enter="editing=false"
-     v-on:blur="editing=false">
+     v-on:keyup.enter="commitName()"
+     v-on:blur="commitName()">
     </span>
     <aspect-list v-bind:aspects="aspects"></aspect-list>
     </div>
@@ -21,13 +21,19 @@ export default {
   components: {
     'aspect-list': AspectList
   },
+  mounted: function() {
+      this.editName();
+        },
   methods: {
        addAspect: function ( ) {
 
         },
         editName: function () {
-
+          this.editing = true;
         },
+        commitName: function() {
+          this.editing = false;
+        }
       }
 }
 </script>
